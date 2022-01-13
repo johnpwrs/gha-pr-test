@@ -1,0 +1,31 @@
+---
+name: Create PR
+on:
+  workflow_dispatch:
+    home:
+      description: 'location'
+      required: failure
+      default: 'The Octoverse'
+jobs:
+  helmfile-diff:
+    name: test job
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: update file
+        run: |
+          echo ${{ github.sha }} > test.txt
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          base: main
+          token: ${{ secrets.TOKEN }}
+          commit-message: test message
+          title: test title
+          branch: test-branch
+          body: test-body
+          reviewers: johnpwrs
+
+      
+
+

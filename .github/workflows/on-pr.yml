@@ -1,0 +1,13 @@
+name: Test PR
+on:
+  pull_request:
+    paths:
+      - 'test.txt'
+jobs:
+  test:
+    name: test on pr
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          echo "test"
